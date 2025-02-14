@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-slate;
+  }
+
+  body {
+    @apply bg-navy text-slate antialiased;
+    @apply font-sans;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  /* Selection */
+  ::selection {
+    @apply bg-green/20 text-green;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-3;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-navy-light;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate/30 rounded-lg;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-slate/50;
+  }
+
+  /* Focus visible */
+  :focus-visible {
+    @apply outline-green outline-2 outline-offset-2;
+  }
+}
+
+@layer components {
+  .section-heading {
+    @apply flex items-center gap-2 text-heading-md font-bold text-slate-lightest mb-10;
+  }
+
+  .section-heading::before {
+    @apply text-green font-mono text-xl;
+  }
+
+  .section-heading::after {
+    content: '';
+    @apply block flex-1 h-[1px] bg-slate/20 ml-5;
+  }
+
+  .numbered-heading {
+    @apply section-heading;
+  }
+}
+
+@layer utilities {
+  .text-heading-number {
+    @apply text-green font-mono font-normal;
+  }
+
+  .link-animation {
+    @apply relative inline-block;
+  }
+
+  .link-animation::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-[1px] bg-green transition-all duration-300;
+  }
+
+  .link-animation:hover::after {
+    @apply w-full;
+  }
+
+  .btn-primary {
+    @apply px-7 py-5 border border-green rounded text-green bg-transparent;
+    @apply hover:bg-green/10 transition-all duration-300;
+    @apply font-mono text-sm;
+  }
+}
