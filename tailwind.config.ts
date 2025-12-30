@@ -9,22 +9,26 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Brittany Chiang color scheme
+        // Deep Violet color scheme
         navy: {
-          DEFAULT: '#0a192f',
-          light: '#112240',
-          lightest: '#233554',
+          DEFAULT: '#0c0a1d',
+          light: '#16132d',
+          lightest: '#231f47',
         },
         slate: {
-          DEFAULT: '#8892b0',
-          light: '#a8b2d1',
-          lightest: '#ccd6f6',
+          DEFAULT: '#9896b0',
+          light: '#b8b6d1',
+          lightest: '#e2e0f6',
         },
         green: {
-          DEFAULT: '#64ffda',
-          tint: 'rgba(100, 255, 218, 0.1)',
+          DEFAULT: '#a78bfa',
+          tint: 'rgba(167, 139, 250, 0.1)',
         },
-        white: '#e6f1ff',
+        accent: {
+          DEFAULT: '#f472b6',
+          tint: 'rgba(244, 114, 182, 0.1)',
+        },
+        white: '#f5f3ff',
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
