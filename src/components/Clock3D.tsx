@@ -6,7 +6,13 @@ import { RoundedBox, Text } from '@react-three/drei'
 import * as THREE from 'three'
 
 function LCDScreen() {
-  const [time, setTime] = useState('')
+  const [time, setTime] = useState(() => {
+    const now = new Date()
+    const hours = now.getHours().toString().padStart(2, '0')
+    const minutes = now.getMinutes().toString().padStart(2, '0')
+    const seconds = now.getSeconds().toString().padStart(2, '0')
+    return `${hours}:${minutes}:${seconds}`
+  })
   const groupRef = useRef<THREE.Group>(null)
   const isDragging = useRef(false)
   const previousMousePosition = useRef({ x: 0, y: 0 })
@@ -22,7 +28,6 @@ function LCDScreen() {
       const seconds = now.getSeconds().toString().padStart(2, '0')
       setTime(`${hours}:${minutes}:${seconds}`)
     }
-    updateTime()
     const interval = setInterval(updateTime, 1000)
     return () => clearInterval(interval)
   }, [])
@@ -95,24 +100,24 @@ function LCDScreen() {
     <group ref={groupRef}>
       {/* Main LCD body - rounded rectangle */}
       <RoundedBox args={[2.4, 0.9, 0.15]} radius={0.08} smoothness={4}>
-        <meshStandardMaterial color="#1a1a1a" metalness={0.3} roughness={0.7} />
+        <meshStandardMaterial color="#ffffff" metalness={0.1} roughness={0.3} />
       </RoundedBox>
 
       {/* LCD bezel */}
       <RoundedBox args={[2.3, 0.8, 0.05]} radius={0.06} smoothness={4} position={[0, 0, 0.06]}>
-        <meshStandardMaterial color="#0f0f0f" metalness={0.2} roughness={0.8} />
+        <meshStandardMaterial color="#f4f4f5" metalness={0.1} roughness={0.4} />
       </RoundedBox>
 
       {/* LCD screen background */}
       <RoundedBox args={[2.1, 0.6, 0.02]} radius={0.04} smoothness={4} position={[0, 0, 0.09]}>
-        <meshStandardMaterial color="#1e293b" metalness={0.1} roughness={0.9} />
+        <meshStandardMaterial color="#e4e4e7" metalness={0.05} roughness={0.5} />
       </RoundedBox>
 
       {/* Time display */}
       <Text
         position={[0, 0, 0.11]}
         fontSize={0.32}
-        color="#94a3b8"
+        color="#18181b"
         anchorX="center"
         anchorY="middle"
         letterSpacing={0.05}
@@ -130,12 +135,23 @@ function LCDScreen() {
 }
 
 export default function Clock3D() {
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) {
+    return <div className="w-[180px] h-[80px] bg-zinc-900 rounded-lg" />
+  }
+
   return (
     <div className="w-[180px] h-[80px]">
       <Canvas
         camera={{ position: [0, 0, 2.8], fov: 40 }}
-        gl={{ antialias: true, alpha: true }}
+        gl={{ antialias: true, alpha: true, preserveDrawingBuffer: true }}
         style={{ background: 'transparent' }}
+        frameloop="always"
       >
         <ambientLight intensity={0.6} />
         <directionalLight position={[5, 5, 5]} intensity={0.7} />

@@ -38,19 +38,22 @@ export default function Home() {
       title: 'CodePilot',
       description: 'Multi-agent AI system for autonomous code generation. Four specialized agents orchestrate complex coding tasks.',
       tags: ['Claude 4.5', 'LangGraph', 'E2B'],
-      link: 'https://github.com/ayushm98/Devon',
+      github: 'https://github.com/ayushm98/Devon',
+      demo: 'https://huggingface.co/spaces/ayushm98/codepilot',
     },
     {
       title: 'ML-Monitor',
       description: 'Production MLOps platform for fraud detection. Real-time inference with sub-100ms latency.',
       tags: ['FastAPI', 'XGBoost', 'MLflow'],
-      link: 'https://github.com/ayushm98/ml-monitor',
+      github: 'https://github.com/ayushm98/ml-monitor',
+      demo: 'http://136.116.111.145:3000/d/a4efd0b5-5597-4ea7-b1c1-e9be8ff21791/fraud-detection-monitoring',
     },
     {
       title: 'Cascade',
       description: 'Intelligent LLM router with semantic caching. Reduces API costs by 60% through smart routing.',
       tags: ['DistilBERT', 'Qdrant', 'Redis'],
-      link: 'https://github.com/ayushm98/cascade',
+      github: 'https://github.com/ayushm98/cascade',
+      demo: 'http://136.111.230.240:8501',
     },
   ]
 
@@ -158,32 +161,39 @@ export default function Home() {
 
             <div className="space-y-1">
               {projects.map((project, idx) => (
-                <a
+                <div
                   key={project.title}
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group block py-8 border-t border-zinc-800 first:border-t-0"
+                  className="group py-8 border-t border-zinc-800 first:border-t-0"
                 >
                   <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                     <div className="flex-1">
                       <div className="flex items-center gap-4 mb-3">
                         <span className="text-zinc-600 text-[13px] font-mono">0{idx + 1}</span>
-                        <h3 className="text-xl font-medium text-zinc-100 group-hover:text-zinc-300 transition-colors">
+                        <h3 className="text-xl font-medium text-zinc-100">
                           {project.title}
                         </h3>
-                        <svg
-                          className="w-4 h-4 text-zinc-600 group-hover:text-zinc-400 transition-all group-hover:translate-x-1 group-hover:-translate-y-1"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 17L17 7M17 7H7M17 7v10" />
-                        </svg>
                       </div>
-                      <p className="text-zinc-400 text-[15px] leading-relaxed max-w-lg">
+                      <p className="text-zinc-400 text-[15px] leading-relaxed max-w-lg mb-4">
                         {project.description}
                       </p>
+                      <div className="flex items-center gap-4">
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[13px] text-zinc-500 hover:text-zinc-200 transition-colors"
+                        >
+                          GitHub
+                        </a>
+                        <a
+                          href={project.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[13px] text-emerald-500 hover:text-emerald-400 transition-colors"
+                        >
+                          Live Demo →
+                        </a>
+                      </div>
                     </div>
                     <div className="flex gap-2 md:pt-1">
                       {project.tags.map((tag) => (
@@ -196,7 +206,7 @@ export default function Home() {
                       ))}
                     </div>
                   </div>
-                </a>
+                </div>
               ))}
             </div>
           </div>
