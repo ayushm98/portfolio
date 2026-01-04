@@ -25,6 +25,7 @@
     "@playwright/test": "^1.57.0",
     "@types/node": "^25.0.3",
     "@types/react": "^19.2.7",
+    "@types/three": "^0.182.0",
     "autoprefixer": "^10.4.23",
     "playwright": "^1.57.0",
     "postcss": "^8.5.6",
