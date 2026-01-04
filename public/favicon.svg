@@ -2,9 +2,9 @@
   <!-- Dark background -->
   <rect width="32" height="32" rx="6" fill="#18181b"/>
 
-  <!-- Bold "A" letter with tech/AI styling -->
-  <path d="M16 6L8 26H12L13.5 22H18.5L20 26H24L16 6ZM14.5 18L16 13L17.5 18H14.5Z" fill="#10b981" stroke="#10b981" stroke-width="1"/>
+  <!-- Left angle bracket < -->
+  <path d="M13 8L5 16L13 24" stroke="#10b981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
 
-  <!-- Small accent dot (representing ML/AI) -->
-  <circle cx="22" cy="10" r="2" fill="#34d399"/>
+  <!-- Right angle bracket > -->
+  <path d="M19 8L27 16L19 24" stroke="#10b981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
 </svg>
