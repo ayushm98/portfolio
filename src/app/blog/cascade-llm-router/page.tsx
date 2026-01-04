@@ -16,7 +16,7 @@ export default function CascadeBlogPost() {
       {/* Header */}
       <header className="border-b border-zinc-800 bg-zinc-950/50 backdrop-blur-sm sticky top-0 z-50">
         <div className="max-w-3xl mx-auto px-6 py-4">
-          <Link href="/blog" className="text-emerald-400 hover:text-emerald-300 transition-colors">
+          <Link href="/blog" className="text-blue-400 hover:text-blue-300 transition-colors">
             ← Back to Blog
           </Link>
         </div>
@@ -54,13 +54,13 @@ export default function CascadeBlogPost() {
           prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6
           prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4
           prose-p:text-zinc-300 prose-p:leading-relaxed
-          prose-a:text-emerald-400 prose-a:no-underline hover:prose-a:text-emerald-300
-          prose-strong:text-emerald-400 prose-strong:font-semibold
-          prose-code:text-emerald-400 prose-code:bg-zinc-900 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
+          prose-a:text-blue-400 prose-a:no-underline hover:prose-a:text-blue-300
+          prose-strong:text-blue-400 prose-strong:font-semibold
+          prose-code:text-blue-400 prose-code:bg-zinc-900 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
           prose-pre:bg-zinc-900 prose-pre:border prose-pre:border-zinc-800
-          prose-blockquote:border-l-emerald-500 prose-blockquote:text-zinc-400
+          prose-blockquote:border-l-blue-500 prose-blockquote:text-zinc-400
           prose-ul:text-zinc-300 prose-ol:text-zinc-300
-          prose-li:marker:text-emerald-400
+          prose-li:marker:text-blue-400
           prose-table:text-zinc-300 prose-th:text-zinc-200 prose-td:border-zinc-800
         ">
           <BlogContent />
@@ -78,7 +78,7 @@ export default function CascadeBlogPost() {
                 href="http://136.111.230.240:8501"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg transition-colors font-medium"
+                className="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors font-medium"
               >
                 Live Demo →
               </a>
@@ -86,7 +86,7 @@ export default function CascadeBlogPost() {
                 href="https://github.com/ayushm98/cascade"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 border border-zinc-700 hover:border-emerald-500 rounded-lg transition-colors font-medium"
+                className="px-6 py-3 border border-zinc-700 hover:border-blue-500 rounded-lg transition-colors font-medium"
               >
                 View Code
               </a>

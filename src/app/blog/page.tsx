@@ -27,7 +27,7 @@ export default function BlogPage() {
       {/* Header */}
       <header className="border-b border-zinc-800 bg-zinc-950/50 backdrop-blur-sm sticky top-0 z-50">
         <div className="max-w-4xl mx-auto px-6 py-4">
-          <Link href="/" className="text-emerald-400 hover:text-emerald-300 transition-colors">
+          <Link href="/" className="text-blue-400 hover:text-blue-300 transition-colors">
             ← Back to Portfolio
           </Link>
         </div>
@@ -56,14 +56,14 @@ export default function BlogPage() {
                 {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                 className="block group"
               >
-                <article className="border border-zinc-800 rounded-lg p-6 hover:border-emerald-500/50 transition-all hover:shadow-lg hover:shadow-emerald-500/10">
+                <article className="border border-zinc-800 rounded-lg p-6 hover:border-blue-500/50 transition-all hover:shadow-lg hover:shadow-blue-500/10">
                 <div className="flex items-center gap-3 text-sm text-zinc-500 mb-3">
                   <time>{post.date}</time>
                   <span>•</span>
                   <span>{post.readTime}</span>
                 </div>
 
-                <h2 className="text-2xl font-semibold mb-3 group-hover:text-emerald-400 transition-colors flex items-center gap-2">
+                <h2 className="text-2xl font-semibold mb-3 group-hover:text-blue-400 transition-colors flex items-center gap-2">
                   {post.title}
                   {post.external && (
                     <svg className="w-5 h-5 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
