@@ -654,8 +654,8 @@ export default function Home() {
       <nav className={`fixed top-0 left-0 right-0 z-[60] bg-[#0a0a0b]/90 backdrop-blur-sm border-b border-zinc-800/20 transition-all duration-500 ${mounted ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0'}`}>
         <div className="max-w-screen-lg mx-auto px-6 md:px-12">
           <div className="flex items-center justify-between h-20">
-            <a href="#" className="text-[15px] font-medium text-zinc-100 tracking-tight">
-              Ayush Malik
+            <a href="#" className="text-[18px] font-medium text-zinc-100 tracking-tight">
+              Ayush
             </a>
             {/* Desktop Nav */}
             <div className="hidden md:flex items-center gap-8">
@@ -1314,7 +1314,7 @@ export default function Home() {
           <div className="max-w-screen-lg mx-auto px-6 md:px-12">
             <div className="flex items-center justify-between">
               <p className="text-[13px] text-zinc-600">
-                © {new Date().getFullYear()} Ayush Malik
+                © {new Date().getFullYear()} Ayush
               </p>
             </div>
           </div>
