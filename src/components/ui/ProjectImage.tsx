@@ -70,7 +70,6 @@ export default function ProjectImage({ type, title }: ProjectImageProps) {
                       <div
                         className="w-full h-full rounded-lg border-2 border-green/40 bg-navy-light/90 backdrop-blur-sm flex flex-col items-center justify-center gap-1 hover:border-green hover:bg-green/10 hover:scale-110 transition-all duration-300 cursor-pointer"
                         style={{
-                          animationDelay: `${idx * 0.15}s`,
                           animation: 'float 3s ease-in-out infinite',
                           animationDelay: `${idx * 0.5}s`
                         }}
