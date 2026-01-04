@@ -708,46 +708,47 @@ export default function Home() {
             </button>
           </div>
         </div>
-        {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div className="md:hidden fixed left-0 right-0 top-20 bottom-0 bg-[#0a0a0b] z-40 overflow-y-auto">
-            <div className="max-w-screen-lg mx-auto px-6 py-8 space-y-4">
-              {['Work', 'About', 'Contact'].map((item) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`block text-[15px] py-2 transition-colors ${
-                    activeSection === item.toLowerCase()
-                      ? 'text-zinc-100'
-                      : 'text-zinc-400 hover:text-zinc-100'
-                  }`}
-                >
-                  {item}
-                </a>
-              ))}
-              <a
-                href="/blog"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block text-[15px] py-2 text-zinc-400 hover:text-zinc-100 transition-colors"
-              >
-                Blog
-              </a>
-              <a
-                href="/resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 mt-2 text-[14px] text-zinc-300 border border-zinc-700 rounded-lg hover:border-zinc-500 hover:text-zinc-100 transition-colors"
-              >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-                Download Resume
-              </a>
-            </div>
-          </div>
-        )}
       </nav>
+
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden fixed left-0 right-0 top-20 bottom-0 bg-[#0a0a0b]/95 backdrop-blur-sm z-50 overflow-y-auto">
+          <div className="max-w-screen-lg mx-auto px-6 py-8 space-y-4">
+            {['Work', 'About', 'Contact'].map((item) => (
+              <a
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                onClick={() => setMobileMenuOpen(false)}
+                className={`block text-[15px] py-2 transition-colors ${
+                  activeSection === item.toLowerCase()
+                    ? 'text-zinc-100'
+                    : 'text-zinc-400 hover:text-zinc-100'
+                }`}
+              >
+                {item}
+              </a>
+            ))}
+            <a
+              href="/blog"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block text-[15px] py-2 text-zinc-400 hover:text-zinc-100 transition-colors"
+            >
+              Blog
+            </a>
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 mt-2 text-[14px] text-zinc-300 border border-zinc-700 rounded-lg hover:border-zinc-500 hover:text-zinc-100 transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              Download Resume
+            </a>
+          </div>
+        </div>
+      )}
 
       <main className="page-transition">
         {/* Hero */}
@@ -837,8 +838,13 @@ export default function Home() {
                         </h3>
                       </div>
 
-                      {/* Bullet Points */}
-                      <ul className="list-disc list-outside ml-5 mb-4 flex-1 space-y-2 marker:text-white">
+                      {/* Mobile: Short Description */}
+                      <p className="md:hidden text-zinc-400 text-[15px] leading-relaxed mb-4 flex-1">
+                        {bulletPoints.slice(0, 1).join('. ')}.
+                      </p>
+
+                      {/* Desktop: Bullet Points */}
+                      <ul className="hidden md:flex md:flex-col list-disc list-outside ml-5 mb-4 flex-1 space-y-2 marker:text-white">
                         {bulletPoints.map((point, i) => (
                           <li key={i} className="text-zinc-400 text-[15px] leading-relaxed">
                             {point.trim()}
