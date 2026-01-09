@@ -761,7 +761,7 @@ export default function Home() {
                 </p>
 
                 <h1 className="text-[clamp(2.5rem,8vw,4.5rem)] font-medium text-zinc-100 leading-[1.1] tracking-tight max-w-3xl">
-                  Building production AI systems that actually ship.
+                  I make AI systems practical, performant, and production-ready. Currently at Radical Squares.
                 </h1>
                 <p className="mt-8 text-zinc-400 text-lg md:text-xl leading-relaxed max-w-xl">
                   I design and build reliable AI infrastructure—RAG pipelines, LLM orchestration,
