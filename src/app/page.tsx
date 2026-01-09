@@ -622,20 +622,28 @@ export default function Home() {
 
   const experiences = [
     {
-      role: 'AI/ML Engineer',
-      company: 'Brckt',
-      companyUrl: 'https://brckt.io',
-      period: '2024 — Present',
-      description: 'Building real-time sports analytics with LLM streaming inference on a 4-person ML team. Reduced latency from 3s to 400ms using chunked streaming and model quantization. Led optimization sprint, collaborated with backend engineers on API design, mentored junior engineer on streaming patterns.',
-      highlights: ['400ms latency', 'Streaming LLMs', 'Real-time analytics'],
+      role: 'GenAI Engineer',
+      company: 'Radical Squares',
+      companyUrl: 'https://radicalsquares.com',
+      period: 'Jan 2026 — Present',
+      description: 'Developing production GenAI applications integrating OpenAI GPT-4o APIs with LangChain. Built full-stack AI platform with React/FastAPI, implemented RAG pipeline with vector embeddings, and deployed microservices with Docker/Redis achieving 94.6% API cost reduction.',
+      highlights: ['GPT-4o', 'RAG Pipeline', '94.6% cost reduction'],
     },
     {
-      role: 'AI Engineer',
+      role: 'AI/ML Engineer',
+      company: 'Brckt (Peristyle Labs)',
+      companyUrl: 'https://brckt.io',
+      period: 'Dec 2024 — Present',
+      description: 'Built real-time GenAI application using Llama 3.3-70B LLM with streaming responses via Server-Sent Events (SSE). Developed scalable backend API with FastAPI and async processing, containerized with Docker and deployed with Caddy reverse proxy.',
+      highlights: ['Llama 3.3-70B', 'SSE Streaming', 'Docker/Caddy'],
+    },
+    {
+      role: 'GenAI Developer',
       company: 'Riverside Global',
       companyUrl: 'https://riversideglobal.co',
-      period: '2024',
-      description: 'Architected production RAG systems for enterprise document search. Improved retrieval relevance from 67% (BM25 baseline) to 94% using hybrid search and cross-encoder re-ranking. Coordinated with Product, DevOps, and enterprise clients. Presented technical architecture to C-suite stakeholders.',
-      highlights: ['94% relevance', 'Hybrid RAG', 'Enterprise scale'],
+      period: 'Jun 2025 — Dec 2025',
+      description: 'Architected enterprise RAG system using GPT-4 API with LangChain orchestration. Implemented 5-stage pipeline with hybrid retrieval (BM25 + semantic), built vector search with ChromaDB/FAISS for 10,000+ documents achieving 94% retrieval accuracy.',
+      highlights: ['94% accuracy', 'ChromaDB/FAISS', 'GPT-4 + LangChain'],
     },
   ]
 
