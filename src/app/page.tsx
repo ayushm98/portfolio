@@ -528,11 +528,57 @@ export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [showBackToTop, setShowBackToTop] = useState(false)
   const [activeTab, setActiveTab] = useState('ml-ai')
+  const [emailCopied, setEmailCopied] = useState(false)
+
+  // Contact form state
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' })
+  const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [formMessage, setFormMessage] = useState('')
 
   // Scroll animation refs
   const workSection = useScrollAnimation()
   const aboutSection = useScrollAnimation()
   const contactSection = useScrollAnimation()
+
+  // Copy email to clipboard
+  const copyEmailToClipboard = () => {
+    navigator.clipboard.writeText('ayushkumarmalik10@gmail.com')
+    setEmailCopied(true)
+    setTimeout(() => setEmailCopied(false), 2000)
+  }
+
+  // Handle contact form submission
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setFormStatus('loading')
+    setFormMessage('')
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        setFormStatus('success')
+        setFormMessage('Thanks for reaching out! I\'ll get back to you soon.')
+        setFormData({ name: '', email: '', message: '' })
+        setTimeout(() => {
+          setFormStatus('idle')
+          setFormMessage('')
+        }, 5000)
+      } else {
+        setFormStatus('error')
+        setFormMessage(data.error || 'Something went wrong. Please try again.')
+      }
+    } catch (error) {
+      setFormStatus('error')
+      setFormMessage('Failed to send message. Please try emailing directly.')
+    }
+  }
 
   useEffect(() => {
     setMounted(true)
@@ -778,7 +824,7 @@ export default function Home() {
                 <div className="mt-12 flex items-center gap-4">
                   <a
                     href="#work"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-zinc-100 text-zinc-900 rounded-lg text-[13px] font-medium hover:bg-white transition-all duration-200 hover:scale-105 active:scale-95 hover:shadow-lg"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-zinc-100 text-zinc-900 rounded-lg text-[13px] font-medium hover:bg-white transition-all duration-200 hover:scale-105 active:scale-95 hover:shadow-lg relative z-10 cursor-pointer"
                   >
                     View work
                     <svg className="w-4 h-4 transition-transform group-hover:translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -786,8 +832,9 @@ export default function Home() {
                     </svg>
                   </a>
                   <a
-                    href="mailto:ayushkumarmalik10@gmail.com"
-                    className="px-5 py-2.5 text-[13px] text-zinc-400 hover:text-zinc-200 transition-all duration-200 relative after:absolute after:bottom-2 after:left-0 after:w-0 after:h-[1px] after:bg-zinc-200 hover:after:w-full after:transition-all after:duration-300"
+                    href="#contact"
+                    className="px-5 py-2.5 text-[13px] text-zinc-400 hover:text-zinc-200 transition-all duration-200 relative z-10 cursor-pointer after:absolute after:bottom-2 after:left-0 after:w-0 after:h-[1px] after:bg-zinc-200 hover:after:w-full after:transition-all after:duration-300"
+                    style={{ pointerEvents: 'auto' }}
                   >
                     Get in touch
                   </a>
@@ -1225,9 +1272,10 @@ export default function Home() {
                   If you're building something interesting, I'd love to hear about it.
                 </p>
 
-                <a
-                  href="mailto:ayushkumarmalik10@gmail.com"
-                  className="inline-flex items-center gap-3 px-6 py-3 bg-zinc-100 text-zinc-900 rounded-lg text-[15px] font-medium hover:bg-white transition-colors group"
+                <button
+                  onClick={copyEmailToClipboard}
+                  className="inline-flex items-center gap-3 px-6 py-3 bg-zinc-100 text-zinc-900 rounded-lg text-[15px] font-medium hover:bg-white transition-colors group relative z-10 cursor-pointer"
+                  style={{ pointerEvents: 'auto' }}
                 >
                   <span>ayushkumarmalik10@gmail.com</span>
                   <svg
@@ -1238,7 +1286,7 @@ export default function Home() {
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
-                </a>
+                </button>
 
                 <div className="flex items-center gap-6 mt-10 pt-10 border-t border-zinc-800">
                   <a
@@ -1272,52 +1320,93 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* What I'm Looking For */}
+              {/* Contact Form */}
               <div className={`transition-all duration-700 delay-200 ${contactSection.isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                <p className="text-zinc-500 text-[13px] tracking-wide uppercase mb-3">What I'm Looking For</p>
-                <div className="space-y-4">
-                  <div className="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800/50">
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center">
-                        <svg className="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
-                      </div>
-                      <h3 className="text-[15px] font-medium text-zinc-100">High-impact AI roles</h3>
-                    </div>
-                    <p className="text-[14px] text-zinc-400 leading-relaxed">
-                      Teams shipping real ML products to production—not just prototypes.
-                    </p>
+                <p className="text-zinc-500 text-[13px] tracking-wide uppercase mb-3">Send a Message</p>
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  <div>
+                    <label htmlFor="name" className="block text-[14px] text-zinc-300 mb-2">
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      required
+                      disabled={formStatus === 'loading'}
+                      className="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-lg text-zinc-100 text-[15px] focus:outline-none focus:ring-2 focus:ring-zinc-700 focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                      placeholder="Your name"
+                    />
                   </div>
 
-                  <div className="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800/50">
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className="w-8 h-8 rounded-lg bg-violet-500/10 flex items-center justify-center">
-                        <svg className="w-4 h-4 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                        </svg>
-                      </div>
-                      <h3 className="text-[15px] font-medium text-zinc-100">Hard problems</h3>
-                    </div>
-                    <p className="text-[14px] text-zinc-400 leading-relaxed">
-                      RAG at scale, LLM orchestration, real-time inference systems.
-                    </p>
+                  <div>
+                    <label htmlFor="email" className="block text-[14px] text-zinc-300 mb-2">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      required
+                      disabled={formStatus === 'loading'}
+                      className="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-lg text-zinc-100 text-[15px] focus:outline-none focus:ring-2 focus:ring-zinc-700 focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                      placeholder="your.email@example.com"
+                    />
                   </div>
 
-                  <div className="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800/50">
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center">
-                        <svg className="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                        </svg>
-                      </div>
-                      <h3 className="text-[15px] font-medium text-zinc-100">Strong engineering culture</h3>
-                    </div>
-                    <p className="text-[14px] text-zinc-400 leading-relaxed">
-                      Code reviews, testing, and ownership over ML systems end-to-end.
-                    </p>
+                  <div>
+                    <label htmlFor="message" className="block text-[14px] text-zinc-300 mb-2">
+                      Message
+                    </label>
+                    <textarea
+                      id="message"
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      required
+                      disabled={formStatus === 'loading'}
+                      rows={5}
+                      className="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-lg text-zinc-100 text-[15px] focus:outline-none focus:ring-2 focus:ring-zinc-700 focus:border-transparent transition-all resize-none disabled:opacity-50 disabled:cursor-not-allowed"
+                      placeholder="Tell me about your project or opportunity..."
+                    />
                   </div>
-                </div>
+
+                  {formMessage && (
+                    <div
+                      className={`p-4 rounded-lg text-[14px] ${
+                        formStatus === 'success'
+                          ? 'bg-green-500/10 border border-green-500/20 text-green-400'
+                          : 'bg-red-500/10 border border-red-500/20 text-red-400'
+                      }`}
+                    >
+                      {formMessage}
+                    </div>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={formStatus === 'loading'}
+                    className="w-full px-6 py-3 bg-zinc-100 text-zinc-900 rounded-lg text-[15px] font-medium hover:bg-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  >
+                    {formStatus === 'loading' ? (
+                      <>
+                        <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        Send Message
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                      </>
+                    )}
+                  </button>
+                </form>
               </div>
             </div>
           </div>
@@ -1347,6 +1436,18 @@ export default function Home() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
         </svg>
       </button>
+
+      {/* Email Copied Toast Notification */}
+      <div
+        className={`fixed bottom-8 left-1/2 -translate-x-1/2 px-6 py-3 bg-zinc-100 text-zinc-900 rounded-lg shadow-lg border border-zinc-300 transition-all duration-300 z-50 flex items-center gap-2 ${
+          emailCopied ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0 pointer-events-none'
+        }`}
+      >
+        <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+        </svg>
+        <span className="text-[15px] font-medium">Email copied to clipboard!</span>
+      </div>
     </div>
   )
 }
