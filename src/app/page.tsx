@@ -815,11 +815,27 @@ export default function Home() {
                 </p>
 
                 <h1 className="text-[clamp(1.875rem,6.5vw,3rem)] font-medium text-zinc-100 leading-[1.1] tracking-tight max-w-3xl">
-                  I make AI systems practical, performant, and production-ready. Currently at Radical Squares.
+                  I make AI systems practical, performant, and production-ready.
                 </h1>
-                <p className="mt-8 text-zinc-400 text-lg md:text-xl leading-relaxed max-w-xl">
-                  I design and build reliable AI infrastructure—RAG pipelines, LLM orchestration,
-                  and real-time inference systems.
+                <p className="mt-5 text-zinc-400 text-lg md:text-xl leading-relaxed max-w-xl">
+                  Currently at{' '}
+                  <a
+                    href="https://radicalsquares.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-zinc-300 hover:text-white transition-colors inline-flex items-center gap-1 group"
+                  >
+                    Radical Squares
+                    <svg
+                      className="w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                  {' '}building RAG pipelines, LLM orchestration, and real-time inference infrastructure.
                 </p>
                 <div className="mt-12 flex items-center gap-4">
                   <a
@@ -845,9 +861,9 @@ export default function Home() {
         </section>
 
         {/* Work - Horizontal Layout */}
-        <section id="work" className="py-32" ref={workSection.ref}>
+        <section id="work" className="py-16" ref={workSection.ref}>
           <div className="max-w-screen-lg mx-auto px-6 md:px-12">
-            <div className={`mb-16 transition-all duration-700 ${workSection.isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+            <div className={`mb-8 transition-all duration-700 ${workSection.isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
               <p className="text-zinc-500 text-[13px] tracking-wide uppercase mb-3">Selected Work</p>
               <h2 className="text-3xl md:text-4xl font-medium text-zinc-100 tracking-tight">
                 Projects
