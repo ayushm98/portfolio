@@ -14,7 +14,7 @@ const htmlTemplate = `
     body {
       width: 1200px;
       height: 630px;
-      background: linear-gradient(135deg, #09090b 0%, #18181b 100%);
+      background: linear-gradient(135deg, #0a0a0b 0%, #18181b 50%, #0a0a0b 100%);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -29,9 +29,9 @@ const htmlTemplate = `
       width: 100%;
       height: 100%;
       background-image:
-        linear-gradient(rgba(52, 211, 153, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(52, 211, 153, 0.03) 1px, transparent 1px);
-      background-size: 50px 50px;
+        linear-gradient(rgba(139, 92, 246, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(139, 92, 246, 0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
     }
     .content {
       text-align: center;
@@ -39,71 +39,107 @@ const htmlTemplate = `
       padding: 60px;
     }
     .name {
-      font-size: 72px;
+      font-size: 88px;
       font-weight: 700;
       color: #fafafa;
-      margin-bottom: 20px;
-      letter-spacing: -2px;
+      margin-bottom: 30px;
+      letter-spacing: -3px;
+      line-height: 1;
+      background: linear-gradient(135deg, #fafafa 0%, #a78bfa 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
     .title {
-      font-size: 36px;
-      color: #34d399;
-      margin-bottom: 40px;
+      font-size: 32px;
+      color: #a78bfa;
+      margin-bottom: 20px;
       font-weight: 500;
+      letter-spacing: 0.5px;
     }
-    .stats {
-      display: flex;
-      gap: 60px;
-      justify-content: center;
-      margin-top: 50px;
+    .subtitle {
+      font-size: 22px;
+      color: #71717a;
+      font-weight: 400;
+      margin-top: 20px;
     }
-    .stat {
-      text-align: center;
-    }
-    .stat-number {
-      font-size: 48px;
-      font-weight: 700;
-      color: #34d399;
-      margin-bottom: 8px;
-    }
-    .stat-label {
-      font-size: 18px;
-      color: #a1a1aa;
-      text-transform: uppercase;
-      letter-spacing: 2px;
+    .dot {
+      color: #8b5cf6;
+      margin: 0 12px;
+      font-size: 28px;
     }
     .glow {
       position: absolute;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(52, 211, 153, 0.15) 0%, transparent 70%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, transparent 60%);
       border-radius: 50%;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
     }
+    .glow2 {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      top: 20%;
+      right: 10%;
+    }
+    .floating-shapes {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    .shape {
+      position: absolute;
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      border-radius: 50%;
+    }
+    .shape1 {
+      width: 120px;
+      height: 120px;
+      top: 10%;
+      left: 5%;
+      animation: float 10s ease-in-out infinite;
+    }
+    .shape2 {
+      width: 80px;
+      height: 80px;
+      bottom: 15%;
+      right: 8%;
+      animation: float 12s ease-in-out infinite reverse;
+    }
+    .shape3 {
+      width: 60px;
+      height: 60px;
+      top: 70%;
+      left: 10%;
+      animation: float 8s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
   </style>
 </head>
 <body>
   <div class="grid"></div>
+  <div class="floating-shapes">
+    <div class="shape shape1"></div>
+    <div class="shape shape2"></div>
+    <div class="shape shape3"></div>
+  </div>
   <div class="glow"></div>
+  <div class="glow2"></div>
   <div class="content">
     <div class="name">Ayush Kumar Malik</div>
-    <div class="title">AI/ML Engineer • RAG Systems • LLM Optimization</div>
-    <div class="stats">
-      <div class="stat">
-        <div class="stat-number">5</div>
-        <div class="stat-label">Projects</div>
-      </div>
-      <div class="stat">
-        <div class="stat-number">4</div>
-        <div class="stat-label">Live Demos</div>
-      </div>
-      <div class="stat">
-        <div class="stat-number">400ms</div>
-        <div class="stat-label">LLM Latency</div>
-      </div>
-    </div>
+    <div class="title">AI/ML Engineer <span class="dot">•</span> RAG Systems <span class="dot">•</span> LLM Optimization</div>
+    <div class="subtitle">Building production AI systems with sub-100ms latency</div>
   </div>
 </body>
 </html>
