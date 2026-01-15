@@ -628,7 +628,7 @@ export default function Home() {
       description: 'Multi-agent AI system for autonomous code generation. Four specialized agents (Planner, Coder, Reviewer, Tester) orchestrate complex coding tasks with sandboxed E2B execution—reducing iteration time by 60% vs manual development cycles. LangGraph provides state management for reliable agent coordination, solving the coordination failure problem (30% → <5%).',
       tags: ['Claude 4.5', 'LangGraph', 'E2B'],
       github: 'https://github.com/ayushm98/Devon',
-      demo: 'http://codepilot.ayushkm.com:8000',
+      demo: 'https://codepilot.ayushkm.com',
       diagram: CodePilotDiagram,
       metric: '4',
       metricLabel: 'Agents',
