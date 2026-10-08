@@ -11,9 +11,9 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Ayush Malik | AI/ML Engineer',
-  description: 'AI/ML Engineer specializing in RAG systems, LLM orchestration, and production machine learning. Building reliable AI infrastructure that actually ships.',
-  keywords: ['AI Engineer', 'ML Engineer', 'RAG Systems', 'LLM', 'Machine Learning', 'Python', 'LangChain', 'Production ML'],
+  title: 'AyushKM — AI content automation for lean teams',
+  description: 'AyushKM turns one brief into a full content run — research, drafts, and channel-ready variants — with a human approval step before anything ships.',
+  keywords: ['AI content automation', 'content generation', 'AI writing platform', 'content operations', 'LLM', 'RAG'],
   authors: [{ name: 'Ayush Malik' }],
   creator: 'Ayush Malik',
   metadataBase: new URL('https://ayushkm.com'),
@@ -21,9 +21,9 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://ayushkm.com',
-    siteName: 'Ayush Malik',
-    title: 'Ayush Malik | AI/ML Engineer',
-    description: 'Building production AI systems that actually ship. RAG pipelines, LLM orchestration, and real-time inference systems.',
+    siteName: 'AyushKM',
+    title: 'AyushKM — AI content automation for lean teams',
+    description: 'One brief in, a full content run out. Researched, cited, on-voice drafts with a human approval gate.',
     images: [
       {
         url: '/og-image.png',
@@ -35,8 +35,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Ayush Malik | AI/ML Engineer',
-    description: 'Building production AI systems that actually ship. RAG pipelines, LLM orchestration, and real-time inference systems.',
+    title: 'AyushKM — AI content automation for lean teams',
+    description: 'One brief in, a full content run out. Researched, cited, on-voice drafts with a human approval gate.',
     images: ['/og-image.png'],
   },
   robots: {
@@ -62,24 +62,19 @@ export default function RootLayout({
 }>) {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'Person',
-    name: 'Ayush Malik',
-    jobTitle: 'AI/ML Engineer',
+    '@type': 'Organization',
+    name: 'AyushKM',
     url: 'https://ayushkm.com',
-    sameAs: [
-      'https://github.com/ayushm98',
-      'https://linkedin.com/in/ayush67',
-    ],
-    knowsAbout: [
-      'Machine Learning',
-      'Artificial Intelligence',
-      'RAG Systems',
-      'LLM Orchestration',
-      'Python',
-      'FastAPI',
-      'LangChain',
-      'PyTorch',
-    ],
+    email: 'contact@ayushkm.com',
+    description:
+      'AI content automation platform: one brief produces researched, cited, on-voice drafts and channel variants, with a human approval step before publishing.',
+    founder: {
+      '@type': 'Person',
+      name: 'Ayush Malik',
+      jobTitle: 'Founder',
+      sameAs: ['https://github.com/ayushm98', 'https://linkedin.com/in/ayush67'],
+    },
+    sameAs: ['https://github.com/ayushm98', 'https://linkedin.com/in/ayush67'],
   }
 
   return (
