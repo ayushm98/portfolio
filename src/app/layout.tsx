@@ -29,7 +29,7 @@ export const metadata: Metadata = {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Ayush Malik - AI/ML Engineer Portfolio',
+        alt: 'AyushKM — AI content automation for lean teams',
       },
     ],
   },
